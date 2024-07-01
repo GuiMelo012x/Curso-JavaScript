@@ -1,0 +1,20 @@
+===== Seção 2 - Tipos de Dados e Operadores  ====
+
+O que são tipos de dados?
+	É a forma de classificar um dado.
+	Temos como dado: "Guilherme", 15,true,[].
+		String, number, boolean, array, empty values, object.
+		Não há distinção entre int, float, double. Todo número é "Number".
+
+
+Number
+	Number é o tipo de dado para valores numéricos.
+	Em JS, todos os números são considerados Number, sejam eles inteiros, pontos flutuantes ou negativos..
+	O operador typeof exibe o tipo de dado.
+	Exemplo:
+		console.log("2");
+		console.log(typeof(2));
+		console.log(typeof 2);
+		console.log(typeof 5.14);
+		console.log(typeof -40);
+	Todos vão dar "numbers"
