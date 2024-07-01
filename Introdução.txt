@@ -1,0 +1,25 @@
+O que é JavaScript?
+	É uma linguagem de programação de alto nível.
+	Sua principal função é deixar a página viva, como alterações de HTML e CSS, adicionando comportamentos através de eventos.
+	É case sensitive.
+	É possível criar animações, esconder ou exibir conteúdos, entre outros.
+		Isso será visto no final do curso, neste momento, será ensinado como utilizar JavaScript em si.
+
+Onde JavaScript é utilizada?
+	Interação com a página, HTML e CSS, através do DOM.
+		DOM é uma cópia do HTML, em um objeto javascript.
+	Cálculo, manipulação, e validação de dados.
+	Também é empregada no server-side, com Node.js.
+	As principais bibliotecas de Front-End são baseadas em JS (react, vue, angular, svelte)
+	
+Formas de executar JavaScript
+	Há diversas formas de executar javascript:
+		Arquivo importado no HTML. Esta é a forma padrão
+		Diretamente no navegador, através do console.
+		Por meio de aplicações, como o JS Fiddle.
+			Site que simula um console.
+	Comando:
+		<script>
+			console.log("Hello World!");
+		</script>
+
