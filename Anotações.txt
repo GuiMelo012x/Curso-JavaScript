@@ -17,4 +17,93 @@ Number
 		console.log(typeof 2);
 		console.log(typeof 5.14);
 		console.log(typeof -40);
-	Todos vão dar "numbers"
+	Todos vão dar "numbers".
+	
+Aritmética com Numbers
+	Podemos realizar operações aritméticas na programação.
+	Operadores como +,-,*,/, podem ser utilizados.
+	A ordem matemática é respeitada na programação.
+	Exemplo:
+		console.log(5+(4*12)); --> ele faz primeiro a multiplicação, e depois a adição.
+
+Special Numbers
+	São dados considerados como números, mas não funcionam como eles.
+	Eles são:
+		Infinity
+		-Infinity
+		NaN (Not a Number)
+	Algumas operações podem resultar nestes valores.
+	Exemplo:
+		console.log(2* "oi");
+
+Strings
+	Strings são textos, e em JS temos três formas de criar dados de texto.
+	Aspas simples, aspas duplas e crases.
+	O padrão é utilizar as aspas duplas.
+	O efeito final é o mesmo, mas cada um destes recursos tem particularidades.
+	Uma string deve sempre começar e terminar com o mesmo caractere, seja ele ",' ou `.
+	Há algumas combinações de caracteres que possuem efeitos nas strings, como o \n, que pula uma linha de texto.
+	Exemplo:
+		console.log("Texto em \nDuas linhas");
+		
+Concatenação
+	É o recurso que une dois ou mais textos.
+	O operador da concatenação é o +.
+	Exemplo:
+		console.log("Recife " + "-" + " Pernambuco")
+
+Interpolação (Template Strings)
+	A interpolação é um recurso semelhante a concatenação, mas nos possibilita escrever tudo na mesma string.
+	Esta deve ser escrita `entre crases`.
+	Podemos executar código JavasCript com ${algum código};
+	Exemplo:
+		console.log(`A soma de 2 + 2 é: ${2+2} e é um cálculo fácil`);
+
+Booleans
+	Os booleans possuem apenas dois valores: true ou false.
+	Qualquer comparação, utilizando os sinais >,<,==, resulta em um booleano.
+	É muito importante para as estruturas de condição e repetição.
+	
+Comparações
+	As comparações que podemos utilizar são:
+		Maior e menor: > e <.
+		Maior ou igual e menor ou igual: >= e <=.
+		Diferente: !=.
+		Igual: ==.
+		Idêntico: ===. --> O idêntico checa o tipo de dado, é melhor utilizar ele do que o igual.
+
+Comparação de Idêntico
+	Os operadores === e !== funcionam como os == e !=.
+	Porém também levam em consideração o tipo de dado.
+	Estes operadores necessitam que o tipo e o dado sejam iguais ou diferentes.
+	Devemos utilizar ao máximo estes operadores.
+	Exemplo:
+		console.log(9 == "9"); --> dá true.
+		console.log(9 === "9");  --> dá false.
+		
+Operadores Lógicos
+	Os operadores lógicos servem para unir duas ou mais comparações.
+	O resultado final é um boolean.
+	&& - AND - true apenas quando os dois lados forem verdadeiras.
+	|| - OR - true quando apenas um lado é verdadeira.
+	! - NOT - inverte o resultado da operação.
+
+Tabela Verdade
+	A | 	B 	| 	A AND B	 | 	A OR B	 |	 NOT A (!A) 
+ False|	False	| False 	 | False 	 | True
+ False| True	| False 	 | True 	 | True
+ True | False 	| False 	 | True		 | False
+ True | True	| True		 | True		 | False 
+
+Empty Values
+	Temos duas palavras reservadas que pertencem a este grupo de dados: undefined e null.
+	Undefined geralmente é visto quando utilizamos um código que ainda não foi definido.
+	Já null, costuma ser inserido pelos programadores, para determinar que não há ainda um valor.
+
+Conversão de Tipo Automática
+	Em JS, algumas operações mudam o tipo de dado, e isso acontece silenciosamente.
+	Exemplos:
+		5 * null --> 0
+		"5" - 3 --> 2
+		"5" + 1 --> 51
+		"a" * "b" --> NaN
