@@ -107,3 +107,205 @@ Conversão de Tipo Automática
 		"5" - 3 --> 2
 		"5" + 1 --> 51
 		"a" * "b" --> NaN
+		
+===== Seção 3 - Estruturas de Programação ====
+
+Salvando Valores na Memória - Variáveis
+	Podemos criar várias variáveis em sequência, desta maneira:
+		let a = 5, b = 4, c = 10;
+	Não podemos começar variáveis com números.
+	Não podemos utilizar caracteres especiais, como @.
+	As variáveis são case sensitive.
+	Exemplos:
+		let nome = "Guilherme"; --> let pode mudar ao longo do código.
+		const idade = 22; --> const é fixo, não muda ao longo do código.
+
+A estrutura de uma função
+	Uma função é um bloco de código que pode ser reaproveitado ao longo do nosso programa.
+	Chamamos ela pelo seu nome, e também o uso de parêntesses:
+		funcao()
+	Também podemos inserir parâmetros, que deixam a execução da função única, ex:
+		soma(a,b)
+	
+Funções do JS: Prompt
+	A função prompt recebe um dado do usuário.
+	Podemos salvar este valor em uma variável.
+	Exemplo:
+		const age = prompt("Digite a sua idade");
+		console.log(`Você tem ${age} anos`);
+		
+Funções do JS: Alert
+	A função alert emite uma mensagem na tela por um pop up.
+	Exemplo:
+		const z = 4;
+		alert(`o número é ${z}`)
+	
+Funções do JS: Math.x
+	Math é um objeto, que possui diversas funções para fins matemáticos.
+	Por exemplo:
+		max - encontra o maior número.
+		floor - arredonda o número para baixo.
+		ceil - arredonda o número para cima.
+	Exemplo:
+		console.log(Math.max(2,5,6,1,0,4,10)); --> ele retorna o maior número.
+		console.log(Math.floor(4.4)); --> ele retorna 4.
+		console.log(Math.ceil(4.4)); --> ele retorna 5.
+		
+Funções do JS: Console.x
+	O console também é um objeto, assim como Math, tem várias funções.
+	A sua função principal é exibir uma mensagem de alguma categoria, na aba console.
+	Exemplo:
+		console.log("Hello World!"); --> mostra uma mensagem no log.
+		console.error("ERRO!!!"); --> mostra uma mensagem de erro no log.
+		console.warn("Aviso!"); --> mostra uma mensagem de aviso no log.
+		
+O que são estruturas de controle?
+	Os programas são executados de cima para baixo.
+	Com estas estruturas, podemos alterar o fluxo de execução.
+	O caminho dependerá das condições e comparações.
+	As principais são if e else.
+
+If 
+	Um bloco de código é executado, se a condição for verdadeira.
+	A condição é validada por um boolean dentro da condição.
+	Exemplo:
+		const m = 10;
+		if (m > 5){
+			console.log("M é maior que 5")
+		}
+		let user = "Joao"
+		if(user === "Joao"){
+			console.log("O user é João");
+		}
+
+		user = "Maria"
+		if(user !== "Joao"){
+			console.log("O user não é João");
+		}
+
+Else
+	O else executa quando o if não atende a sua condição.
+	Ou seja, não temos um bloco de validação, apenas do que será executado.
+	Se X > 2, execute ISSO, se não, execute ISTO.
+	Exemplo:
+		if(loggedIn){
+			console.log("Está ligado")
+		} else{
+			console.log("Não está autenticado")
+		}
+
+		nome = "Joao";
+		if(nome === "Joao"){
+			console.log("O nome do usuário é João")
+		}else{
+			console.log("O nome do usuário não é João")
+		}
+
+Else If
+	É uma estrutura intermediária do if e e do else
+	É possível adicionar novas condições, como no if.
+	Assim ,temos a possibilidade de criar várias validações, para resolver nosso problema.
+	Exemplo:
+		if(1>2){
+			console.log("Teste")
+		}else if(2>3){
+			console.log("Teste 2")
+		}else if(5 > 1){
+			console.log("Agora sim");
+	
+O que são estruturas de repetição?
+	Um bloco de código que se repete até uma condição ser satisfeita.
+	Evita a repetição desnecessária do nosso código.
+	Utiliza for e while.
+	As sintaxes são diferentes, mas as duas chegam no mesmo resultado.
+	
+While
+	Faz uma ação até que uma condição seja atingida.
+	No bloco, definimos o fim do loop, que é a condição.
+	Temos que definir um incrementador, que é quem faz a condição ser atingida.
+	Exemplo:
+		let i = 0;
+		while( i < 5){
+			console.log(`Loop ${i + 1}`);
+			i++;
+		}
+Do While
+	Parecido com o while, porém não é muito utilizado.
+	Exemplo:
+		let o = 5;
+		do{
+			console.log(`Valor de o: ${o}`)
+			o--
+		}while(o > 1);
+
+For
+	O for é a estrutura de repetição mais utilizada.
+	Ela condensa toda a lógica em uma linha, simplificando as coisas.
+	Na própria declaração, colocamos: (Incrementador, condição final, progressão)
+	Exemplo:
+		for(let t = 0; t<5;t++){
+			console.log(`Loop ${t+1} de T com For`)
+		}
+
+		let r = 5
+		for(r;r>0;r--){
+			console.log(`O r está diminuindo: ${r}`)
+		}
+
+A importância da identação
+	A identação é utilizado para organizar múltiplos blocos de código. 
+	Utilizamos tab para criar um nível de identação.
+	O código funciona sem, porém é interessante adicionar este recurso.
+
+Forçando a saída de um loop
+	Com a instrução de break, podemos sair de um loop.
+	Isso pode poupar memória, pois o código será executado menos vezes.
+	Exemplo:
+		for(let h = 20; h > 10; h-- ){
+			console.log(`O valor de h é: ${h}`)
+			
+			if(h === 12){
+				console.log("O h é 12 e deu Break!");
+				break;
+			}
+		}
+
+Pulando uma execução do loop
+	A palavra reservada continue, pode pular uma ou mais execuções do loop.
+	É um recurso utilizado de forma semelhante ao break.
+	Exemplo:
+		for(let l = 1; l < 10;l++){
+			if(l % 2 === 0 ){
+				console.log("Número par!");
+				continue;
+			}
+			console.log(l);
+		}
+
+Estrutura condicional: Switch
+	O switch pode ser utilizado para organização de um excesso de if/else.
+	Cada if seria um case.
+	Para cada case, temos que adicionar um break no final, para sair do switch.
+	E temos o default, que é como se fosse um "else".
+	Exemplo:
+		const job = "Programador"
+		switch(job){
+			case "Programador":
+				console.log("Você é um programador!");
+				break
+			case "Engenheiro":
+				console.log("Você é um Engenheiro!");
+				break
+			case "Advogado":
+				console.log("Você é um Advogado!");
+				break
+			default:
+				console.log("Profissão não encontrada.")
+		}
+
+Convenção de nome de variáveis
+	Nos casos abaixo, temos da pior forma até a melhor, para declarar nome de variáveis:
+		let programadorcadastrado --> ruim.
+		let programador_cadastrado
+		let ProgramadorCadastrado
+		let programadorCadastrado --> mais utilizada.
