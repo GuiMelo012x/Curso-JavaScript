@@ -309,3 +309,154 @@ Convenção de nome de variáveis
 		let programador_cadastrado
 		let ProgramadorCadastrado
 		let programadorCadastrado --> mais utilizada.
+
+===== Seção 4 - Funções em JavaScript  ====
+
+O que são funções?
+	São estruturas de código menores, por meio delas, podemos dividir nosso código em várias funções.
+	O ideal é que cada uma tenha apenas um único objetivo.
+	Isso nos faz poupar código, pois podemos reaproveitá-las.
+	A linguagem tem várias funções já criadas, e nós podemos criar as nossas.
+
+Definindo uma função
+	Primeiramente utilizamos a palavra "function", para iniciar uma função.
+	Depois, precisamos nomeá-la, e dar os parâmetros, que são uma espécie de configuração, entre parênteses depois do nome.
+	O corpo da função ficam entre as chaves.
+	Exemplo:
+		function minhaFuncao(){
+			console.log("testando")   
+		}
+		minhaFuncao();
+		-----------
+		const minhaFuncaoEmVariavel = function(){
+			console.log("Função em variável")
+		}
+		minhaFuncaoEmVariavel();
+		-----------
+		function comParametro(txt){
+			console.log(`Imprimindo ${txt}`)
+		}
+
+		comParametro("Oiiii");
+
+Retornando Valores
+	O retorno serve para processarmos um valor dentro da função e retornar para o programa.
+	A palavra reservadap ara este recurso é o "return".
+	Se não retornamos nada, a função tem utilidade, mas não externaliza o que acontece nela.
+	Exemplo:
+		function soma(n1,n2){
+			return n1 + n2;
+		}
+
+		const resultado = soma(a,b);
+		console.log(resultado);
+		console.log(soma(c,d));
+
+Escopo das funções
+	As funções tem um escopo separado do escopo do programa.
+	Este escopo faz com que variáveis de fora não funcionem dentro, é um a parte.
+	Dentro das funções, podemos declarar novas variáveis, sem interferir nas já declaradas.
+
+
+Escopo aninhado
+	As formas de criar variáveis, let e const, nos dão a possibilidade do escopo aninhado.
+	Escopo aninhado consiste em ter em qualquer bloco a declaração de variáveis separadas dos outros escopos.
+	Um bloco é caracterizado por um código entre {}.
+	
+Arrow function
+	É uma forma de criar funções, sendo caracterizado pela seta =>.
+	Exemplo:
+		const parOuImpar = (n) => {
+			if(n%2 === 0){
+				console.log("Par");
+				return;
+			}
+			console.log("Ímpar");
+		}
+
+		parOuImpar(1);
+		parOuImpar(2);
+		
+	Ela pode ser resumida em uma sintaxe mais resumida, sendo muito útil para funções pequenas.
+	Nesta forma, são omitidas as {} e a instrução de return.
+	Exemplo:
+		const raizQuadrada = (x) =>{ --> Forma padrão.
+			return x*x;
+		}
+		
+		const raizQuadrada2 = (x) => x*x; --> Forma facilitada.
+
+Argumentos opcionais
+	Os argumentos/parâmetros nas funções são obrigatórios, precisamos passar todos.
+	Porém, há alguns casos de funções que podem funcionar sem algum dos argumentos.
+	Para resolver isso, podemos fazer uma checagem do parâmetro com um if.
+	Exemplo:
+		const multiplication = function(g,h){
+			if (h === undefined){
+				return g * 2 
+			}else{
+				return g*h
+			}
+		}
+
+		console.log(multiplication(4,3)) --> sai no else.
+		console.log(multiplication(3)) --> sai no if.
+
+		const greeting = (name) =>{
+			if(!name){
+				return console.log("Insira o nome");
+			}
+			console.log(`Olá ${name}`)
+		}
+
+Argumentos com valor default
+	Valor default é quando o argumento tem um valor prévio.
+	Se for passado um novo valor, o default é substituído.
+	Se não, o default é utilizado na função.
+	Exemplo:
+		const customGreeting = (name,greet = "Olá") =>{ --> o valor default é o "Olá" em greet.
+			return `${greet},${name}!`
+		}
+
+		console.log(customGreeting("Bryan"));
+		console.log(customGreeting("Claudia","Bom dia"))
+		-----------------------------
+		const repeatText = (text,repeat = 2) => { --> 2 é o default, se nenhum parâmetro for passado, ele repete no mínimo 2 vezes.
+			for (let i = 0; i< repeat; i++){
+				console.log(text);
+			}
+		}
+
+		repeatText("Loop"); --> repete 2 vezes pois é o padrão default.
+		repeatText("Loop",6); --> repete 6 vezes.
+		
+Closure
+	Closure é um conjunto de funções, onde temos um reaproveitamento do escopo interno de uma função.
+	Pois este escopo não pode ser acessado fora da função, já que é um bloco.
+	Então, há funções internas que aproveitam o escopo, e são chamadas de closure.
+	É uma função que executa outra.
+	Podem servir para salvar os resultados já executados, criando uma espécie de incrementação.
+	Assim, temos uma variável que executa uma função e modifica seu valor.
+	Exemplo:
+		function someFuncion(){
+			let txt = "Alguma coisa"
+
+			function display(){
+				console.log(txt);
+			}
+			display();
+		}
+
+		someFuncion();
+		
+Recursão
+	Um recurso que permite a função se autoinvocar continuamente. Criamos uma espécie de loop. 
+	É interessante definir uma condição final, para parar a execução.
+	Exemplo:
+		function factorial(x){
+			if (x===0){
+				return 1
+			}else{
+				return x * factorial (x-1); ---> Função se autoinvocando
+			}
+		}
