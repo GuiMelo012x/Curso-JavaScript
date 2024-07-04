@@ -47,3 +47,60 @@ console.log(dog);
 
 delete dog.age
 console.log(dog);
+
+/* Array de objetos */
+
+const cat = {
+    name: "Texeira",
+    age: 5,
+    breed: "Laranja",
+}
+const bixin = [dog,cat];
+console.log(bixin)
+
+/* Mais sobre objetos */
+const obj ={
+    a: "teste",
+    b: true,
+}
+
+console.log(obj);
+
+const obj2= {
+    c:[]
+}
+
+Object.assign(obj2,obj);
+
+console.log(obj2)
+
+/* Conhecendo melhor os objetos */
+console.log(Object.keys(dog));
+console.log(Object.keys(cat));
+
+console.log(Object.entries(dog))
+console.log(Object.entries(cat))
+
+/* Mutação */
+
+const a = {
+    name:"Cleonice "
+}
+
+const b = a;
+
+a.age = 23;
+console.log(a)
+console.log(b)
+
+delete b.age;
+
+console.log(a)
+console.log(b)
+
+/* Loop em array */
+const users = ["Riselda","Maiara","Silezia","Dionísio"]
+
+for (let i = 0; i < users.length; i++) {
+    console.log(`Listando o usuário: ${users[i]}`);
+}

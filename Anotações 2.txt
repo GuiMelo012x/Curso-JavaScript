@@ -38,6 +38,11 @@ Objetos
 		age: 35,
 		job: "Programadora"
 	}
+	Podemos copiar todas as propriedades de um objeto para outro com o método assign.
+	O objeto literal é uma instância de um objeto, chamada Object.
+	Um objeto ou array criado com const pode ter seus elementos e propriedades modificados.
+	Exemplo:
+		Object.assign(obj2,obj); --> o primeiro é quem recebe, o segundo é de quem pega.
 
 Criando e deletando propriedades
 	Para adicionar uma nova propriedade a um objeto, utilizamos a notação de ponto e atribuímos um valor.
@@ -50,3 +55,45 @@ Criando e deletando propriedades
 		}
 	dog.color = "white"; --> adiciona a cor.
 	delete dog.age; --> remove a idade.
+
+Diferença entre arrays e objetos
+	Os arrays são utilizados como lista de itens, geralmente todos possuem o mesmo tipo.
+	Já os objetos são utilizados para descrever um item, contendo as suas informações e propriedades, que podem possuir diferentes tipos de dados.
+	Podemos ter também um array de objetos, e isso é muito utilizado.
+	Exemplo:
+		const dog = { --> objeto 1.
+		name: "Amancio",
+		age: 5,
+		breed: "Maltês",
+		}
+		
+		const cat = { --> objeto 2.
+			name: "Texeira",
+			age: 5,
+			breed: "Laranja",
+		}
+		const bixin = [dog,cat]; --> array de objetos.
+
+Conhecendo melhor o objeto
+	Podemos verificar as propriedades de um objeto pelo método "keys" de Object.
+	Com o método "entries", recebemos arrays dos nomes das propriedades com seus valores.
+	
+Mutação
+	Ocorre quando criamos um objeto a partir de outro.
+	Este novo objeto não é novo, e sim uma referência do primeiro.
+	As mudanças dele, podem afetar a cópia e vice-versa.
+	Exemplo:
+		const a = {
+		name:"Cleonice "
+		}
+		const b = a;
+		a.age = 70; --> adiciona em b também.
+		b delete name; --> deleta em a também.
+
+Loops em arrays
+	É muito comum percorrer os arrays através de estruturas de repetição.
+	Isso serve para utilizar o resultado de cada um dos elementos de forma simples, sem repetição de código.
+	Exemplo:
+		for (let i = 0; i < users.length; i++) {
+			console.log(`Listando o usuário: ${users[i]}`);
+		}
