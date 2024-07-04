@@ -1,0 +1,52 @@
+===== Seção 5 - Arrays e Objetos  ====
+Arrays
+	São listas
+	Podemos inserir valores de qualquer tipo de dado.
+	Os valores são inseridos entre [].
+	Cada valor é separado do outro por uma vírgula.
+	Um array é considerado objeto.
+	
+Propriedades
+	Propriedades são como informações de um objeto.
+	Os arrays tem propriedades, assim como outros tipos de dados.
+	As propriedades podem ser acessadas por notação de ponto ou colchetes:
+		dado.prop
+	Exemplo:
+		numbers.lenght --> variavel com o tamanho do array.
+	
+Métodos
+	Métodos são como funções, acessamos com notação de ponto e utilizamos () para invocar.
+	Um importante conceito da POO: Objetos são compostos por métodos e propriedades.
+	Como muitos dados são objetos em JS, temos métodos e propriedades neles.
+	Exemplo:
+		const numbers[1,2,3]
+		const otherNumbers = [4,5,6];
+		const allNumbers = numbers.concat(otherNumbers) --> junta os 2 arrays ([1,2,3,4,5,6])
+		
+		const text ="Algum texto"
+		console.log(text.toLowerCase(text)) --> transforma o texto em lower case.
+		console.log(text.indexOf("g")) --> pega o número index do "g".
+
+Objetos	
+	Em JS, temos um tipo de dado que é o objeto, mas seu nome técnico é object literals.
+	Isso porque o objeto vem da Orientação a Objetos, com recursos como herança, instância.
+	Já o literals possui apenas propriedades e métodos que nós mesmos os criamos.
+	O objeto fica em um bloco de {}.
+	Exemplo:
+		const person = {
+		name: "Edna ",
+		age: 35,
+		job: "Programadora"
+	}
+
+Criando e deletando propriedades
+	Para adicionar uma nova propriedade a um objeto, utilizamos a notação de ponto e atribuímos um valor.
+	Já para excluir, vamos utilizar o operador delete na propriedade alvo.
+	Exemplo:
+		const dog = {
+		name: "Amancio",
+		age: 5,
+		breed: "Maltês",
+		}
+	dog.color = "white"; --> adiciona a cor.
+	delete dog.age; --> remove a idade.
