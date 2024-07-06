@@ -268,4 +268,203 @@ Conhecendo o JSON
 			const myObject = JSON.parse(myJSON);
 		Objeto para JSON:
 			const myNewJSON = JSON.stringify(myObject);
+
+===== Seção 6 - Programação Orientada a Objetos  ====
+O que é programação orientada a objetos?
+	É um paradigma da programação que utiliza objetos como seu principal princípio.
+	A maioria dos softwares é desenvolvido neste paradigma.
+	Frameworks e bibliotecas de front-end também são desenvolvidos com POO.
+	Até este momento, estávamos desenvolvendo no modo "procedural", isto é, o código executando de cima para baixo.
+	
+Métodos
+	Podem ser adicionados aos objetos.
+	São como propriedades, mas contém uma função.
+	Invocamos os métodos do mesmo modo que funções.
+	Exemplo:
+		const animal = {
+			nome:"Eva",
+			latir:  function(){ --> criando a função do objeto.
+				console.log("au au");
+			}
+		}
+		animal.latir(); --> sai "au au" no console.
 		
+Aprofundando em Métodos
+	Os métodos são utilizados para interagir também com as propriedades do seu objeto.
+	Podemos exibi-las ou modificá-las.
+	Podemos nos referenciar com o próprio objeto com a palavra reservada "this".
+	Exemplo:
+		const pessoa = {
+			name : "Luiz",
+			getName: function(){
+				return this.name;
+			},
+			setName: function(newName){
+				this.name = newName;
+			}
+		}
+		pessoa.setName("Sergio"); --> muda o nome.
+
+Prototype 
+	O prototype é um recurso que faz parte da arquitetura do JavaScript.
+	Não é mais muito utilizado atualmente, mas é necessário saber como as coisas aconteces por debaixo dos panos.
+	É uma espécie de herança, onde objetos pais herdam propriedades e métodos aos filhos.
+	Por isso, muitos dados são considerados objetos e temos objetos como string,number e outros.
+	Ou seja, cada dado tem um objeto pai que herdou características pelo prototype.
+	O recurso fundamental que precisamos entender é o "fallback".
+	Quando uma propriedade não existe em um dado/objeto, ela é procurada no seu ancestral.
+	Ou seja, é por isso que temos acesso a length em strings, por exemplo.
+	Quando criamos um objeto a partir de outro, este outro será o prototype do objeto criado.
+	Porém, também herdará as características do objeto pai, se for um objeto, herda de Object.
+	Esta é a cadeia de prototype.
+	Exemplo:
+		console.log(Object.getPrototypeOf(text)); --> mostra todas as propriedades do objeto.
+
+Classes Básicas
+	Os prototypes são originados de uma Classe, que é o molde dos objetos.
+	Nela, definimos os métodos e propriedades.
+	O JavaScript já possui suas classes, porém podemos criar as nossas.
+	Isso é essencial para a Orientação a Objetos.
+	Exemplo:
+		const dog = { --> cria um objeto com o nome "dog" contendo as propriedades.
+			raca: null,
+		} 
+		
+		const maltes= Object.create(dog); --> cria outro objeto derivado de dog, com as mesmas atribuições.
+
+		maltes.raca = "Maltês"; --> atualiza a atribuição.
+		console.log(maltes.raca); --> imprime "Maltês"
+
+Classes Baseadas em Funções Construtoras
+	Utilizando funções como classes, conseguimos iniciar as propriedades com a criação do objeto. Isto é uma função construtora.
+	O construtor tem como objetivo instanciar um objeto, ou seja, criar um novo objeto.
+	Faz a mesma coisa que o método anterior, porém mais fácil.
+	Exemplo:
+		function criarCachorro(nome,idade){
+			const cachorro = Object.create({});
+			cachorro.nome = nome;
+			cachorro.idade = idade;
+			return cachorro;
+		}
+		
+		const knupp = criarCachorro("Knupp",9);
+		console.log(knupp) 
+		
+Funções como Classe
+	Este recurso é semelhante ao anterior, mas com uma nova palavra chave: a "new".
+	Em várias linguagens, o new é utilizado para instanciar novos objetos, emJS isso também acontece.
+	E eles podem partir de funções.
+	Método ainda mais fácil do que o anterior.
+	Exemplo:
+		function Cachorro(nome,raca){
+			this.nome = nome;
+			this.raca = raca;
+		}
+		
+		const husky = new Cachorro("Neves","Husky");
+		
+		console.log(husky);
+		
+
+Métodos na Função Construtora
+	Para adicionar métodos antes da criação do objeto, podemos acessar o prototype e colocá-los lá.
+	Esta é basicamente a essência de JavaScript.
+	Porém com a evolução da linguagem, outros recursos foram criados, é o que veremos nas próximas aulas.
+	Exemplo:
+		Cachorro.prototype.latir = function(){
+			console.log("au au au - método latir")
+		}
+		husky.latir();
+
+Classes ES6
+	Nas versões mais atuais de JS, abandonamos as funcions e utilizamos as classes.
+	Aqui temos recursos comuns em outras linguagens, como o constructor, além da instância por new.
+	Exemplo:
+		class CachorroClasse {
+			constructor(nome, raca){
+				this.nome = nome;
+				this.raca = raca;
+			}
+		}
+
+		const bocafoli = new CachorroClasse("Bocafoli", "Shih-Tzu");
+		console.log(bocafoli);
+		
+Mais sobre Classes
+	Não podemos adicionar propriedade diretamente as classes.
+	Isso precisa ser feito ao iniciá-la ou via prototype.
+	Métodos da classe também podem utilizar this para se referir ao objeto instanciado.
+	Os métodos não precisam da palavra function.
+	Exemplo:
+		class Estado{
+			constructor(estado,cidade){
+				this.estado = estado;
+				this.cidade = cidade;
+			}
+			descreverLocal(){
+				console.log(`${this.cidade} fica no estado de ${this.estado}`)
+			}
+		}
+
+		const local = new Estado("Ceará", "Juazeiro do Norte");
+		local.descreverLocal(); --> chama o Método e ele diz onde fica.
+		
+Override nas propriedades via Prototype
+	As instâncias dos objetos são criadas baseadas nas classes.
+	Ou seja, as propriedades têm os valores definidos no construtor ou por métodos.
+	Para alterá-los podemos utilizar o prototype.
+	Exemplo:		
+		const diogo = new Humano("Diogo", "76");
+		Humano.prototype.idade = "Não definida";
+
+Symbols em Classes
+	Quando utilizamos o recurso Symbol com classe, é possível criar uma propriedade única e imutável.
+	Isso é útil quando há algum dado que se repetirá em todos os objetos criados a partir da classe.
+	É útil para criar uma propriedade com valor constante, sem alterá-la.
+	Exemplo:
+		const asas = Symbol();
+		Aviao.prototype[asas] = 2; --> Asas sempre será 2.
+		const boeing = new Aviao("Boeing",10) --> Boeing , 10 turbinas.
+		console.log(boeing[asas]) // para acessar o "asas"
+
+Getters e Setters
+	O get é um método utilizado para exibir o valor de alguma propriedade.
+	O set é utilizado para alterar o valor.
+	Através de métodos, temos um bloco de código para transformação de dados.
+	Exemplo:
+		get exibirTitulo(){
+			return `Você está lendo ${this.titulo}`
+		}
+		set adicionarTags(tags){
+			const tagsArrays = tags.split(", ");
+			this.tags = tagsArrays;
+		}
+		console.log(myPost.exibirTitulo) --> getter
+		myPost.adicionarTags = "progracao, javascript, js"; -->  setter
+		
+Herança
+	Uma classe pode herdar propriedades de outra por meio de herança.
+	Utilizamos a palavra chave "extends", para adicionar a classe que vai trazer as propriedades.
+	E "super" para enviar os valores para a classe pai.
+	Exemplo:
+		class Peixes{
+			constructor(branquias){
+				this.branquias = branquias;
+			}
+		}
+		
+		class Salmao extends Peixes{
+			constructor(branquias,nome){
+				super(branquias,branquias);
+				this.nome = nome;
+			}
+		}
+		const marlin = new Salmao(2,"Marlin") --> (branquias, nome)
+		
+Operador instanceof
+	Assim como typeof verifica o tipo, "instanceof" verifica se um objet oé pai de outro, para ter certeza da ancestralidade.
+	Isso é verificado com objeto => classe, e não através das classes.
+	Exemplo:
+		console.log(marlin instanceof Peixes); --> true.
+		console.log(marlin instanceof Salmao); --> true.
+		console.log(Salmao instanceof Peixes); --> false.
