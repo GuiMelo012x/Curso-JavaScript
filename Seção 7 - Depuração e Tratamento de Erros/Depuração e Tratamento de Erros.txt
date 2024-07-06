@@ -1,0 +1,89 @@
+===== Seção 7 - Depuração e Tratamento de Erros  ====
+O que é bug e debug?
+	Bug - problema que ocorreu no código, muitas vezes por erro do programador, e impede o funcionamento do software.
+	Debug - método de encontrar e resolver o bug, em JavaScript, temos diversas estratégias para isso.
+	Validação - técnicas utilizadas para ter o mínimo possível de bugs no software.
+	
+Strict mode
+	O strict é um modo de desenvolvimento que deixa o JS mais rigoroso na hora de programar.
+	Deve ser declarado no topo do arquivo ou de funções.
+	O strict não limita os recursos de JS, ele baliza a forma que você programa.
+	Bibliotecas famosas são todas feitas em strict.
+	Para utilizar, basta adicionar: "use strict"; no inicio do código.
+	Ele não permite, por exemplo, utilizar palavras reservadas como nome de variável.
+	Existem muito mais.
+
+Debugger
+	É uma instrução que nos permite o debug no console do navegador.
+	Podemos evidenciar os valores das variáveis em tempo real e com o programa executando, o que ajuda bastante.
+	Exemplo:
+		if(c == 1){
+			c = d+2;
+		}
+		debugger;
+		
+Tratamento de dado por funçao
+	Nunca podemos confiar no dado que é passado pelo usuário.
+	Sempre devemos criar validações e tratamento para os mesmos.
+	Por exemplo, precisamos checar se o usuário não vai passar algo errado. Como passar um int quando pedimos string, e vice-versa.
+	Exemplo:
+		function checkNumber(n){
+			const result = Number(n);
+			if(Number.isNaN(result)){
+				console.log("Valor incorreto!");
+				return;
+			}
+			console.log("Valor correto!");
+			return result;
+		}
+		
+		checkNumber(5); --> true.
+		checkNumber("10"); --> true.
+		checkNumber({}); --> false.
+		checkNumber("Teste"); --> false.
+
+Exceptions
+	As exceptions são erros que nós geramos no programa.
+	Este recurso faz o programa ser abortado, ou seja, ele não continua sua execução.
+	Utilizamos a expressão "throw new Error", com a mensagem de erro como argumento.
+
+Try Catch
+	Tentaremos executar algo em "try", e se um erro ocorrer, ele cai no bloco "catch"
+	Útil tanto para debug, como também no desenvolvimento de uma aplicação sólida.
+	Exemplo:
+		try{
+			const soma = x + y ;
+		} catch(error){ // E, e, rr, error são comuns como nome de parâmetros para o erro
+			console.log(`Erro no programa: ${error}`)
+		}
+
+Finally
+	É uma instrução que vai depois do bloco try catch.
+	Ela é executada independente de haver algum erro ou não em try.
+	Exemplo:
+		try{
+			const value = checkNumber("vai dar erro")
+			if(!value){
+				throw new Error("Valores Inválido!")
+			}
+		}catch(error){
+			console.log("Algum problema aconteceu.")
+		}finally{
+			console.log("Código executado.")
+		}
+
+Assertions
+	São quando os tratamentos de valores passados pelo usuário, geram um erro.
+	Porém este recurso tem como objetivo nos ajudar no desenvolvimento do programa.
+	Ou seja, seria algo para os devs e não para os usuários.
+	Exemplo:
+		function checkArray(arr){
+			if(arr.length === 0 ){
+				throw new Error("O array precisa ter elementos")
+			}else{
+				console.log(`O array tem ${arr.length} elementos.`)
+			}
+		}
+
+		checkArray([5]); --> avisa normalmente.
+		checkArray([]); --> dá um erro e ativa a exception.
