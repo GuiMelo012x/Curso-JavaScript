@@ -262,3 +262,10 @@ Conhecendo o JSON
 	Na maioria das vezes, vamos precisar converter objetos para JSON, ou um JSON para um objeto JavaScript válido.
 	Utilizamos o objeto JSON e os métodos stringify e parse.
 	Exemplo: 
+		Criando um JSON:
+			const myJSON ='{"name": "Cristiano", "age": 68,"skills": ["PHP","Python","Java"]}'
+		JSON para Objeto: 
+			const myObject = JSON.parse(myJSON);
+		Objeto para JSON:
+			const myNewJSON = JSON.stringify(myObject);
+		
