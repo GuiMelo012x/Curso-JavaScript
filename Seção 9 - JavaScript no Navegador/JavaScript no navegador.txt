@@ -1,0 +1,169 @@
+Protocolos da Web
+	Um protocolo é uma forma de comunicação entre computadores através da rede.
+	O HTTP serve para solicitar arquivos e imagens do servidor (Hyper Text Transfer Protocol).
+	É possível navegar em sites através do HTTP.
+	SMTP: protocolo para envio de email.
+	TCP: protocolo para transferência de dados, como o download.
+
+Conhecendo as URLs
+	Cada arquivo que é carregado no navegador tem uma URL.
+	A URL (Uniform Resource Locator) pode ser dividida em três partes.
+	Por exemplo: "https://exemplo.com.br/index.html"
+		https é o protocolo;
+		exemplo.com.br é o domínio, que referencia um servidor (DNS --> IP);
+		index.html é o arquivo/página que estamos acessando.
+
+HTML e o DOM
+	O DOM(Document Object Model) é uma representação fiel do HTML da página.
+	Ele é utilizado para acessar o HTML através de JS.
+	Assim, podemos modificá-lo através dos métodos e propriedades dos objetos que alteram o DOM.
+	Através dele, podemos atrelar eventos ao HTML, como click ou pressionar teclas do mouse.
+
+Visualizando o DOM
+	O DOM pode modificar completamente uma página.
+	Por meio dele, podemos adicionar, remover ou alterar os elementos, atributos e estilização.
+	O DOM cria uma árvore do HTML, os elementos são chamados de nós.
+
+Movendo-se pelo DOM
+	Todos os elementos podem ser acessados através de document.body.
+	A partir deste elemento pai, vamos encontrando os childNodes(nós).
+	E podemos acessar suas propriedades, e consequentemente, modificá-los.
+	Exemplo:
+		console.log(document.body);
+		console.log(document.body.childNodes);
+		console.log(document.body.childNodes[1]);
+		console.log(document.body.childNodes[1].childNodes);
+		console.log(document.body.childNodes[1].childNodes[1].textContent);
+
+Selecionando os elementos
+	Temos várias formas de selecionar especificamente um elemento, ou um conjunto deles.
+	A diferença entre eles é a forma de seleção, que pode ser por: classe, id, seletor de CSS.
+	Alguns exemplos são: getElementsByTagName,getElementById,querySelector.
+
+Encontrando elementos por tag
+	Com o método "getElementsByTagName", selecionamos um conjunto de elementos por uma tag em comum.
+	O argumento é uma string que leva a tag a ser selecionada.
+	Exemplo:
+		const listItens = document.getElementsByTagName("li");
+		console.log(listItens);
+
+Encontrando elementos por id
+	Com o método "getElementById" selecionamos um único elemento, já que o id é único na página.
+	O argumento é uma string que leva o id a ser selecionado.
+	Exemplo:
+		const title = document.getElementById("title");
+		console.log(title)
+		
+Encontrando elementos por classe
+	Com o método "getElementsByClassName" selecionamos um conjunto de elementos, por uma classe em comum.
+	O argumento é uma string que leva a classe a ser selecionada.
+	Exemplo:
+		const products = document.getElementsByClassName("product");
+		console.log(products)
+		
+Encontrando elementos por CSS
+	Com o método "querySelectorAll", selecionamos um conjunto de elementos por meio de um seletor de CSS.
+	E com o "querySelector", apenas um elemento, com base também num seletor de CSS.
+	Exemplo:
+		const productsQuery = document.querySelectorAll(".product");
+		console.log(productsQuery);
+
+		const mainContainer = document.querySelector("#main-container");
+		console.log(mainContainer);
+		
+Alterando o HTML
+	Podemos mudar praticamente toda a página com DOM.
+	Adicionar, remover ou até clonar elementos.
+	Alguns métodos muito utilizados são: insertBefore,appendChild,replaceChild.
+
+Método insertBefore
+	Cria um elemento antes de um outro elemento.
+	É necessário criar um elemento com JS, isso pode ser feito com "createElement"
+	O elemento de referência pode ser selecionado com alguns dos métodos que vimos antes.
+	Exemplo:
+		const p = document.createElement("p");
+		const header = title.parentElement;
+		header.insertBefore(p, title)
+	
+Método appendChild
+	Adiciona um elemento dentro de outro.
+	Este elemento adicionado será o último elemento do elemento pai.
+	Exemplo:
+		const navLinks = document.querySelector("nav ul");
+		const li = document.createElement("li")
+		navLinks.appendChild(li);
+	
+Método replaceChild
+	Troca um elemento por outro.
+	Precisa de um elemento pai, do elemento para ser substituído, e o elemento que substituir.
+	Exemplo:
+		const h2 = document.createElement("h2");
+		h2.textContent = "Título H2" --> método que adiciona conteúdo no elemento.
+		header.replaceChild(h2,title); --> (elemento novo, elemento que será substituido)
+
+Método textContent
+	Adiciona conteúdo no elemento criado.
+	Exemplo:
+		const h2 = document.createElement("h2");
+		h2.textContent = "Novo conteudo" --> adiciona conteúdo no elemento.
+
+Criando nós de texto
+	Os textos podem ser manipulados com métodos também.
+	Temos o createTextNode, que cria um nó de texto.
+	E este nó pode ser inserido em um elemento.
+	Melhor utilizar o textContent
+	Exemplo:
+		const myText = document.createTextNode("Agora vamos colocar mais um título")
+		console.log(myText);
+
+		const h3 = document.createElement("h3");
+
+		h3.appendChild(myText);
+		console.log(h3);
+		mainContainer.appendChild(h3);
+		
+		
+Trabalhando com atributos
+	Podemos ler e alterar valores dos atributos.
+	Para ler, vamos utilizar o método "getAttribute".
+	Para alterar, utilizamos "setAttribute", este leva o nome do atributo e o valor para alterar.
+	Exemplo:
+		const firstLink = navLinks.querySelector("a"); --> neste caso, alterei o primeiro link do site.
+		firstLink.setAttribute("href","https://www.google.com");
+		firstLink.setAttribute("target","_blank"); --> depois dessas alterações, o primeiro link levará ao google, em outra aba.
+
+Altura e largura dos elementos
+	É possível também pegar valores com altura e largura de elementos.
+	Vamos utilizar as propriedades "offsetWidth" e "offsetHeight"
+	Se queremos desconsiderar a borda, temos "clientWidth" e "clientHeight".
+	Exemplo:
+		const footer = document.querySelector("footer");
+		console.log(footer.offsetWidth); 
+		console.log(footer.offsetHeight);
+
+		console.log(footer.clientWidth);
+		console.log(footer.clientHeight);
+		
+Posição do Elemento
+	Com o método "getClientBoundingRect", podemos pegar várias informações do elemento.
+	Como a posição no eixo X,Y,altura,largura e outros.
+	Exemplo:
+		const product1 = products[0]; --> pois quero as informações do primeiro produto.
+		console.log(product1.getBoundingClientRect());
+		
+Estilos com JS	
+	Todo elemento possui uma propriedade chamada style.
+	A partir dela, conseguimos alterar as regras de CSS.
+	Note que regras separadas por traço viram camelCase, ou seja, background-color vira backgroundColor, por exemplo.
+	Exemplo:
+		mainContainer.style.color = "red";
+		mainContainer.style.backgroundColor = "#333";
+		mainContainer.style.paddingBottom = "15px";
+
+Alterando estilos de HTMLCollection
+	HTMLCollection aparece quando selecionamos vários elementos de uma vez.
+	Podemos passar por cada um dos elementos com um for of, e estilizar individualmente cada item.
+	Exemplo:
+		for (const li of listItens) { --> passa por todos os li's do listItens
+			li.style.backgroundColor = "red"; --> muda todos.
+		}
