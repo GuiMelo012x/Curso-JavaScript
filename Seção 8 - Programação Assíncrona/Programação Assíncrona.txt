@@ -1,0 +1,104 @@
+O que é programação assíncrona?
+	A programação assíncrona precisa ser utilizada quando as respostas não serão obtidas de forma imediata no programa.
+	Chamadas a uma API são assíncronas, não sabemos quanto tempo a resposta pode demorar.
+	Até agora, utilizamos só instruções síncronas.
+	Na programação assíncrona, as execuções não ocorrem em formato de fila, e sim no seu tempo, correndo de linha em linha.
+	
+Função setTimeout
+	A função setTimeout faz parte da programação assíncrona, pois estabelecemos uma ação para ser executada após um certo tempo.
+	Ou seja, o código continua rodando e depois temos a execução da função.
+	Exemplo:
+		setTimeout(() => {
+			console.log("Executou no setTimeout")
+		}, 2000); --> 2000ms (milissegundos)
+
+Função setInterval
+	Semelhante a setTimeout, ela é executada após um tempo.
+	Porém ela não para de ser executada. Temos a sua chamada definida pelo tempo de espera na execução.
+	É como um loop infinito com execução de tempo controlada.
+	Exemplo:
+		setInterval(() => {
+			console.log("Executando no setInterval a cada 2000ms")
+		}, 2000);
+
+Promises
+	As promises são execuções assíncronas.
+	É literalmente uma promessa de um valor que pode chegar em um ponto futuro.
+	Utilizamos o objeto Promise e alguns métodos para nos auxiliar.
+	Exemplo:
+		promessa.then(value => {
+			console.log("a soma é " + value + " - Promessa executada após o código síncrono" );
+			return value; 
+		})
+
+		.then((value) => - 1);
+		.then((value) => console.log("agora é" + value));
+
+Falha nas promises
+	Uma promise pode conter um erro, ou dependendo de como o código é executado, podemos receber um erro.
+	Utilizamos a funcção catch para isso, podemos pegar o erro e exibir.
+	Exemplo:
+		Promise.resolve(4 * "asd")
+		  .then((n) => {
+			if (Number.isNaN(n)) {
+			  throw new Error("Valores inválidos!");
+			}
+			return n;
+		  })
+		  .catch((error) => {
+			console.error(error.message);
+		  });
+		
+Rejeitando Promises
+	A rejeição, diferente do erro, ocorre quando nós decidimos ejetar uma promise.
+	Podemos fazer isso com o método reject.
+	Exemplo:
+		function checkNumber(n){
+			return new Promise((resolve, reject) => {
+				if(n>10){
+					resolve(`O número é maior que 10`)
+				}else{
+					reject(new Error(`Número muito baixo. - Reject`))
+				}
+			})
+		}
+		
+Resolvendo Várias Promises
+	Com o método "all", podemos executar várias promises.
+	O javaScript se encarrega de verificar e retornar os seus valores finais.
+	Exemplo:
+		Promise.all([p1,p2,p3]).then((values) => console.log(values));
+
+Async functions
+	As async functions são funções que retornam Promises.
+	Consequentemente, há a possibilidade de receber o resultado delas depois, além da utilização dos métodos de Promise.
+	Exemplo:
+		async function somarComDelay (a,b) {
+			return a + b;
+		}
+		
+Instrução await
+	A instrução await serve para aguardar o resultado de uma async function.
+	Tornando mais simples lidar com este tipo de função, desta maneira não precisamos trabalhar diretamente com Promises.
+	Exemplo:
+		async function chamadaAsync(){
+			console.log("Chamando a Promise, e esperando o resultado")
+			const result = await resolveComDelay()
+			console.log(`O resultado chegou: ${result}`)
+		}
+
+Generators
+	Funcionam de forma semelhante a promises.
+	Ações podem ser pausadas e continuadas depois.
+	Temos novos operadores, como function e yield.
+	Exemplo:
+		function* generator(){
+		yield 1;
+		yield 2;
+		yield 3;
+	}
+	const gen = generator();
+	console.log(gen.next().value); --> 1
+	console.log(gen.next().value); --> 2
+	console.log(gen.next().value); --> 3
+	console.log(gen.next().value); --> undefined
