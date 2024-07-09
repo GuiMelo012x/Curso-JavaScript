@@ -15,7 +15,8 @@ Conhecendo as URLs
 
 HTML e o DOM
 	O DOM(Document Object Model) é uma representação fiel do HTML da página.
-	Ele é utilizado para acessar o HTML através de JS.
+	Ele é utilizado para acessar o HTML através de JS. 
+	SEMPRE adicionar um "defer" no script src.
 	Assim, podemos modificá-lo através dos métodos e propriedades dos objetos que alteram o DOM.
 	Através dele, podemos atrelar eventos ao HTML, como click ou pressionar teclas do mouse.
 
